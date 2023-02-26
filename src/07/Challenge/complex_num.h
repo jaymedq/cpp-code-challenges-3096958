@@ -14,6 +14,8 @@ class complex_num{
          complex_num operator *(complex_num);
          complex_num operator /(complex_num);
          void print(std::ostream &os);
+         double r = 0;
+         double i = 0;
 };
 
 #endif /* COMPLEX_NUM_H */
