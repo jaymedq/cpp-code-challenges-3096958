@@ -18,8 +18,45 @@
 bool is_valid_ip(std::string ip){
 
     // Write your code here
-
-    return false;
+    uint8_t lastDotIndex = 0;
+    int decimal = 0;
+    int validDecimals = 0;
+    std::string decimalString = "";
+    for(uint8_t index = 0; index < ip.size(); index++)
+    {
+        if(ip[index] == '.')
+        {
+            decimalString = ip.substr(lastDotIndex,index - lastDotIndex);
+            decimal = std::stoi(decimalString);
+            lastDotIndex = index+1;
+            if(decimal > 255 || decimal < 0)
+            {
+                return false;
+            }
+            else
+            {
+                validDecimals++;
+            }
+        }
+    }
+    decimalString = ip.substr(lastDotIndex);
+    decimal = std::stoi(decimalString);
+    if(decimal >= 0 && decimal <= 255)
+    {
+        validDecimals++;
+    }
+    else
+    {
+        return false;
+    }
+    if(validDecimals == 4)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 
 // Main function
