@@ -46,7 +46,7 @@ bool is_bitonic(const std::vector<int> &v){
             }
             isFalling = true;
         }
-        wasLastRising = isRising;
+        wasLastRising = (isRising || isFalling)? isRising : wasLastRising;
         if(v[i] == v[i+1])
         {
             isRising = false;
